@@ -1,0 +1,45 @@
+﻿@model ICollection<MovieShopXS.ViewModels.MovieItemVM>
+@using MovieShopXS.Models
+@using MovieShopXS.ViewModels
+
+@{
+    ViewBag.Title = "List of Movies";
+}
+
+<h2>@Html.LabelForModel()</h2>
+
+<table class="table" width="100" align="center">
+
+    @foreach (MovieItemVM movie in Model)
+    {
+        <tr>
+            <td width="20%">
+                <img src="~/images/movies/@(movie.Title).jpg" height="250" width="150" alt="No Picture" />
+            </td>
+            <td width="80%">
+                <h3>@Html.DisplayFor(modelItem => movie.Title)</h3>
+                (<i>@Html.DisplayFor(modelItem => movie.Year)</i>)<p />
+                @Html.DisplayFor(modelItem => movie.Description)<p />
+
+                @Html.LabelFor(modelItem => movie.Director)<br />
+                @Html.DisplayFor(modelItem => movie.Director)<p />
+
+                @Html.LabelFor(modelItem => movie.Actors)<br />
+                @foreach (MovieActorVM Actor in movie.Actors)
+                {
+                    @Html.DisplayFor(m => Actor.Name)<br />
+                }
+                <p />
+                @Html.LabelFor(modelItem => movie.Rating)<br />
+                @Html.DisplayFor(modelItem => movie.Rating) <span class="glyphicon glyphicon-star"></span>
+                @*<a asp-action="Update" asp-route-id="@movie.Id" asp-route-ratingAction="@RatingAction.Up"><span class="glyphicon glyphicon-chevron-up"></span></a>*@
+                @*<a asp-action="Update" asp-route-id="@movie.Id" asp-route-ratingAction="@RatingAction.Down"><span class="glyphicon glyphicon-chevron-down"></span></a>*@
+                <p>
+                    <a asp-action="Delete" asp-route-id="@movie.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                </p>
+            </td>
+
+        </tr>
+    }
+
+</table>

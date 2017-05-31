@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+@model MovieShopXS.ViewModels.MovieItemVM
+@using MovieShopXS.ViewModels
+
+<h3>Voeg een product toe:</h3>
+<form asp-controller="Movies" asp-action="AddMovie">
+    <div asp-validation-summary="All"></div>
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Year"></label>
+        <input asp-for="Year" type="number" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description"class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating"></label>
+        <input asp-for="Rating" class="form-control" type="number" />
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Genre"></label>
+        <input asp-for="Genre" class="form-control" type="number" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Director"></label>
+        <input asp-for="Director" class="form-control" type="number" />
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</form>
